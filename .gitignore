@@ -1,0 +1,52 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# ---- Node / frontend ----
+node_modules/
+frontend/dist/
+.vite/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage/
+playwright-report/
+test-results/
+
+# ---- Secrets and local settings ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- Data and models (keep raw data out of Git) ----
+data/raw/
+data/processed/
+*.csv
+!data/sample/*.csv
+mlruns/
+mlartifacts/
+*.joblib
+*.pkl
+*.keras
+*.h5
+
+# ---- Editors and OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
