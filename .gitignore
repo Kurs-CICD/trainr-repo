@@ -50,3 +50,6 @@ mlartifacts/
 .idea/
 .DS_Store
 Thumbs.db
+
+# ---- macOS ----
+.DS_Store
