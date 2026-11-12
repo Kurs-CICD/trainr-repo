@@ -1,10 +1,11 @@
 # Before coding any models, it is a good idea to install
 # the necessary libraries:
+from pathlib import Path
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error
@@ -12,8 +13,13 @@ from sklearn.preprocessing import MinMaxScaler
 
 # After that, the data set needs to be loaded and put
 # into data frames so that it is easier to work with:
-nutrition_path = "/content/nutrition.csv"
-exercises_path = "/content/Exercises.csv"
+# CSVs live in ml/data/ (resolved relative to this file, so it works
+# no matter which folder you run the script from)
+
+
+DATA_DIR = Path(__file__).resolve().parent / "data"
+nutrition_path = DATA_DIR / "nutrition.csv"
+exercises_path = DATA_DIR / "Exercises.csv"
 nutri_data = pd.read_csv(nutrition_path)
 exe_data = pd.read_csv(exercises_path)
 
@@ -297,7 +303,7 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 import os
-from google.colab import files
+# from google.colab import files  # Colab-only; not available in VS Code
 
 # First on the list for the RL's development, the environment needs to be set up.
 # Each of the states are defined by either energy, soreness or progress,
