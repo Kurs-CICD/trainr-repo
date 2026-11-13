@@ -1,7 +1,5 @@
-# Before coding any models, it is a good idea to install
-# the necessary libraries:
+#installing the necessary libraries:
 from pathlib import Path
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
