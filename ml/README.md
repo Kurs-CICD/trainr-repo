@@ -1,3 +1,14 @@
 # ml
+The TrainR machine learning package: data loading, models and the reinforcement learning environment. 
 
-The TrainR machine learning package: data loading, models and the reinforcement learning environment. Built from Week 2 onwards.
+## Setup
+
+```bash
+pip install -r ml/requirements.txt
+```
+
+Put `nutrition.csv` and `Exercises.csv` in `ml/data/`, then run:
+
+```bash
+python ml/ml_model.py
+```
