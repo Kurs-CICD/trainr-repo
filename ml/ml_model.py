@@ -19,19 +19,22 @@ from sklearn.preprocessing import MinMaxScaler
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 nutrition_path = DATA_DIR / "nutrition.csv"
-exercises_path = DATA_DIR / "Exercises.csv"
+exercises_path = DATA_DIR / "Exercises_clean.csv"
 nutri_data = pd.read_csv(nutrition_path)
 exe_data = pd.read_csv(exercises_path)
 
 # Then the dataset needs to be cleaned, this makes the
 # data easier for the ML/DL models to train and test on:
-exe_data.drop(columns=['Unnamed: 0'], inplace=True)
+# Drop the leftover index column if the CSV has one, and make the
+# body part column name consistent ("Body Part" -> "BodyPart"):
+exe_data = exe_data.drop(columns=['Unnamed: 0'], errors='ignore')
+exe_data = exe_data.rename(columns={'Body Part': 'BodyPart'})
 exe_data['Name'] = exe_data['Name'].str.strip().str.lower()
 exe_data['Type'] = exe_data['Type'].str.strip().str.lower()
 exe_data['BodyPart'] = exe_data['BodyPart'].str.strip().str.lower()
 exe_data['Equipment'] = exe_data['Equipment'].str.strip().str.lower()
 exe_data['Difficulty'] = exe_data['Difficulty'].str.strip().str.lower()
-exe_data['Equipment'].fillna('Bodyweight', inplace=True)
+exe_data['Equipment'] = exe_data['Equipment'].fillna('Bodyweight')
 nutri_data['name'] = nutri_data['name'].str.strip().str.lower()
 nutri_data['serving'] = nutri_data['serving'].str.strip().str.lower()
 nutri_data['calories'] = pd.to_numeric(nutri_data['calories'], errors='coerce')
